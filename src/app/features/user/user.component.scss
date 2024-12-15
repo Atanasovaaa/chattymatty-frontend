@@ -1,0 +1,39 @@
+.user-form {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+
+    .form-title {
+        font-size: 24px;
+        line-height: 36px;
+        font-weight: 500;
+        margin-bottom: 16px;
+    }
+
+    .inputs-form {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        input {
+            padding: 8px;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+        }
+
+        ::placeholder {
+            color: #C4C4C4;
+            font-style: italic;
+        }
+
+        button {
+            border: none;
+            color: #FFFFFF;
+            border-radius: 8px;
+            padding: 8px 16px;
+            background-color: #00a000;
+            margin-top: 8px;
+        }
+    }
+}

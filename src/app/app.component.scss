@@ -1,0 +1,33 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+
+    .navigation {
+        a {
+            padding: 8px;
+            color: #00a000;
+            text-decoration: none;
+        }
+
+        :hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.container {
+    width: 80vw;
+    height: 80vh;
+    margin: 0 auto;
+    padding: 24px;
+    border-radius: 32px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+}
