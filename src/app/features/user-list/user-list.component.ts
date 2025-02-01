@@ -1,41 +1,62 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { TUser } from "../../models/user.model";
 import { UserApi } from "../../services/user.service";
-import { DataGridComponent, DataGridHeader } from "../../components/data-grid/data-grid.component";
+import { TFriend } from "../../models/user.model";
 
 @Component({
     standalone: true,
     templateUrl: './user-list.component.html',
     styleUrl: './user-list.component.scss',
-    imports: [DataGridComponent]
 })
 export class UserListPage implements OnInit {
-    public headerConfig: DataGridHeader[] = [
-        {
-            column: 'ID',
-            value: 'id'
-        },
-        {
-            column: 'Full name',
-            value: 'fullName'
-        },
-        {
-            column: 'Username',
-            value: 'username'
-        },
-    ]
 
     private userApi = inject(UserApi);
-    
-    public usersCollection: TUser[] = [];
+
+    public usersCollection: any[] = [];
+    public friendsCollection: TFriend[] = [];
+    public userId = Number(localStorage.getItem('userId'));
+
 
     public ngOnInit(): void {
         this.fetchAllUsers();
+        this.loadUsers();
+        this.loadFriends();
     }
 
-    public fetchAllUsers() {
-        this.userApi.getAllUsers().subscribe((response: any) => {
-            this.usersCollection = response.data;
+    public fetchAllUsers(): void {
+        this.userApi.getAllUsers(this.userId).subscribe((usersData: any) => {
+
+            if (!this.userId) {
+              throw new Error('User ID not found. Please log in.');
+            }
+            this.usersCollection = usersData.data;
+        });
+    }
+
+    public loadFriends(): void {
+        this.userApi.getFriends(this.userId).subscribe((users: any) => {
+            this.friendsCollection = users.data || [];
+        })
+    }
+
+    public loadUsers(): void {
+        this.userApi.getAllUsers(this.userId).subscribe((users: any) => {
+            this.usersCollection = users.data || [];
+        })
+    }
+
+    public addFriend(friendId: number) {
+        if(!this.userId) {
+            throw new Error('User ID not found. Please, log in or create account');
+        }
+
+        this.userApi.addFriend(this.userId, friendId).subscribe(()=> {
+            const addedFriend = this.usersCollection.find(user => user.id === friendId);
+
+            if(addedFriend) {
+                this.friendsCollection.push(addedFriend);
+                this.usersCollection = this.usersCollection.filter(user => user.id !== friendId);
+                this.loadFriends();
+            }
         })
     }
 }

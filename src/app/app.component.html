@@ -1,15 +1,33 @@
 <div class="header">
   <h2>Chatty Matty</h2>
   <div class="navigation">
-    <a href="/">
-      <span>Create user</span>
-    </a>
+    @if(isUserLoggedIn) {
     <a href="/users">
       <span>Users</span>
     </a>
+    <a href="/create-channel">
+      <span>Create Channels</span>
+    </a>
+    }
   </div>
 </div>
 
+@if (isUserLoggedIn) {
 <div class="container">
-  <router-outlet/>
+  <div class="sidebar">
+    <div class="list">
+      <channel-list />
+    </div>
+    <div class="list">
+      <friend-list />
+    </div>
+  </div>
+  <div class="wrapper">
+    <router-outlet />
+  </div>
 </div>
+}
+
+@if(!isUserLoggedIn) {
+<create-user />
+}

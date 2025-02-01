@@ -1,0 +1,67 @@
+.table-title {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: left;
+    color: #00a000
+}
+
+.divider {
+    background-color: #E0E0E0;
+    height: 1.5px;
+    border: 0;
+    margin: 4px 0;
+}
+
+.channels-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .no-data {
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .channel-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        a {
+            text-decoration: none;
+            color: #171717
+        }
+    
+        p {
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+
+            .delete-channel-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                color: #990407;
+            }
+    
+            .rename-channel-btn {
+                background: none;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                color: #c76a1d;
+            }
+        }
+
+    }
+}

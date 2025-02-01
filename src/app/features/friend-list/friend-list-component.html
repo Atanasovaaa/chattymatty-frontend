@@ -1,0 +1,13 @@
+<p class="table-title">Friends list</p>
+<hr class="divider">
+
+<div class="friends-list">
+    @if (friendsCollection.length === 0) {
+    <p>No data to show</p>
+    }
+    @for (user of friendsCollection; track user) {
+    <a href="#">
+        <p>{{user.username}}</p>
+    </a>
+    }
+</div>

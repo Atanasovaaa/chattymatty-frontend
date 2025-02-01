@@ -1,0 +1,28 @@
+<p class="table-title">Channels list</p>
+<hr class="divider">
+
+<div class="channels-list">
+    @if (channelsCollection.length === 0) {
+    <p class="no-data">No data to show</p>
+    }
+
+    @for (channel of channelsCollection; track channel) {
+    <div class="channel-item">
+        <div>
+            <p>{{channel.name}}</p>
+        </div>
+        <div class="action-buttons">
+            <div (click)="renameChannel(channel)" class="rename-channel-btn">
+                <i class="fa-solid fa-pencil fa-2xs"></i>
+            </div>
+            <div (click)="deleteChannel(channel)" class="delete-channel-btn">
+                <i class="fa-solid fa-trash fa-2xs"></i>
+            </div>
+        </div>
+    </div>
+    }
+    @if(isEditable && selectedChannel) {
+    <input #saveInput type="text">
+    <button (click)="processRenameChannel(saveInput.value)">Save</button>
+    }
+</div>

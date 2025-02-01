@@ -8,6 +8,10 @@
     align-items: center;
     text-align: center;
     padding: 24px;
+    background-color: #FFFFFF;
+    border-radius: 0 0 16px 16px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 24px;
 
     .navigation {
         a {
@@ -23,11 +27,38 @@
 }
 
 .container {
+    display: flex;
     width: 80vw;
     height: 80vh;
     margin: 0 auto;
-    padding: 24px;
+    padding: 16px;
     border-radius: 32px;
     background-color: #FFFFFF;
+    gap: 16px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+    .sidebar {
+        width: 20%;
+        background-color: #f1f1f1;
+        border-radius: 16px;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        // gap: 50%;
+
+        .list {
+            overflow-y: scroll;
+            height: -webkit-fill-available;
+        }
+
+        a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+    }
+
+    .wrapper {
+        width: 80%;
+        overflow-y: auto;
+    }
 }

@@ -1,8 +1,14 @@
 <div class="user-form">
     <p class="form-title">Create user</p>
     <div class="inputs-form">
-        <input [(ngModel)]="user.username" type="text" placeholder="Enter your username" />
-        <input [(ngModel)]="user.fullName" type="text" placeholder="Enter your full name" />
+        <div class="field">
+            <label>Username</label>
+            <input [(ngModel)]="user.username" type="text" placeholder="Enter your username" />
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input [(ngModel)]="user.password" type="password" placeholder="Enter your password" />
+        </div>
         <button (click)="createUser()">Create</button>
     </div>
 </div>
